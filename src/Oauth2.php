@@ -55,4 +55,15 @@ class Oauth2
         }
         throw new \Exception("授权异常，".Url::instance()->url());
     }
+
+
+    /**
+     * 非微信用户是否获取详情授权模式
+     * @param array $userinfo
+     * @return bool 没有详情授权时，true，则false
+     */
+    static public function isNotAuthUserInfo(array $userinfo):bool
+    {
+        return (md5(file_get_contents($userinfo['headimgurl'])) === 'c6aa423da40b267b7e1ee98b1ed2ee23' and $userinfo['nickname'] === '微信用户');
+    }
 }
