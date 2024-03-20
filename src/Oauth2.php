@@ -36,7 +36,7 @@ class Oauth2
         session_start();
 //        $url = Url::instance()->url();
         $aUrl = self::getOauth2Url($url,$flag);
-        $auth_user  = $_SESSION["yyl_wechat_user"];
+        $auth_user  = $_SESSION["yyl_wechat_user"]??null;
         if ($auth_user){
             return $auth_user;
         }
