@@ -34,29 +34,23 @@ class Oauth2
     static public function oauth2(string $url,int $flag = 0)
     {
         session_start();
-//        $url = Url::instance()->url();
         $aUrl = self::getOauth2Url($url,$flag);
         $auth_user  = $_SESSION["yyl_wechat_user"]??null;
         if ($auth_user){
             return $auth_user;
         }
-/*        $url = url('','',true,true).'?'.http_build_query($_GET);
-        $wxOauth2 = $->getOAuthRedirectUrl($url);*/
         if (!isset($_GET['openid'])){
-//            echo $wxOauth2;
             header('location: '.$aUrl);
             exit;
         }
         $openid = $_GET['openid'] ?? '';
-//        $authUser = $this->weWork->getAuthUser($get_code);
         if ($openid){
-//            $userid = $authUser['openid'] ;
             if (isset($_GET['userinfo'])){
                 $_GET['userinfo'] = json_decode(base64_decode($_GET['userinfo']),true);
             }
             $_SESSION["yyl_wechat_user"] = $_GET;
             return $_GET;
         }
-        throw new \Exception("授权异常,".json_encode($authUser,256));
+        throw new \Exception("授权异常，".Url::instance()->url());
     }
 }
