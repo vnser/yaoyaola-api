@@ -33,7 +33,9 @@ class Oauth2
      */
     static public function oauth2(string $url,int $flag = 0)
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $aUrl = self::getOauth2Url($url,$flag);
         $auth_user  = $_SESSION["yyl_wechat_user"]??null;
         if ($auth_user){
