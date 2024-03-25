@@ -17,4 +17,6 @@ class ApiPath
     //授权地址
     public const CHECKUSER = "https://www.yaoyaola.net/exapi/check_user/10814785";
 
+    //查询账户信息
+    public const ACCOUNTINFO = "https://www.yaoyaola.net/exapi/accountinfo";
 }

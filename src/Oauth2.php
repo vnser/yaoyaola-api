@@ -66,4 +66,6 @@ class Oauth2
     {
         return (md5(file_get_contents($userinfo['headimgurl'])) === 'c6aa423da40b267b7e1ee98b1ed2ee23' and $userinfo['nickname'] === '微信用户');
     }
+
+
 }
